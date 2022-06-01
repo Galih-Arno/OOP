@@ -1,0 +1,52 @@
+'''
+Perbaikan UTS PBO penerapan OOP pada python
+Galih Gratia Arno 21019003
+'''
+
+#this is a Superclass
+class Kendaraan:
+    #attribute superclass (Kendaraan)
+    def __init__(self, color, merk, jenis):
+        self.color = color
+        self.merk = merk
+        self.jenis = jenis       
+    #output method superclass (Kendaraan)
+    def aksi(self, laju, penumpang, bbm):
+        #this is a output attribute __init__(superclass)
+        print(f'\nKendaraan : {self.jenis}\n Merk Kendaraan : {self.merk}\n Warna Kendaraan : {self.color}')
+        #this is output method superclass (Kendaraan)
+        print(f'\nKecepatan Kendaraan : {laju} km/jam\n Jumlah Penumpang : {penumpang} orang\n Bahan Bakar : {bbm}')
+
+#this is a subclass Kendaraan (car)
+class Mobil(Kendaraan):
+    #attribute subclass mobil
+    def __init__(self, color, merk, jenis, transmisi, type):
+        super().__init__(color, merk, jenis)
+        self.transmisi = transmisi
+        self.type = type
+    #output method mobil
+    def aksi(self, laju, penumpang, bbm, parking, pintu_Bagasi):
+        print(f'\nTransmisi : {self.transmisi}\n Type : {self.type}\n [{parking}]\n [{pintu_Bagasi}]')
+        return super().aksi(laju, penumpang, bbm)
+
+#this is a subclass Kendaraan (motorcycle)
+class Motor(Kendaraan):
+    #attribute subclass motor
+    def __init__(self, color, merk, jenis, type, transmisi ):
+        super().__init__(color, merk, jenis)
+        self.__type = type
+        self.transmisi = transmisi
+    #kumpulan method motor  
+    def aksi(self, laju, penumpang, bbm, berhenti, RPM):
+        print(f'\nTransmisi : {self.transmisi}\n Type : {self.__type}\n [{berhenti}]\n [{RPM}]')
+        return super().aksi(laju, penumpang, bbm)
+        
+#pengujian untuk mobil
+mobil1 = Kendaraan("Putih", "Honda", "Mobil")
+mobil1 = Mobil('Putih', 'Honda', 'Mobil', 'Matic', 'Honda Jazz RS')
+mobil1.aksi('10000','5', 'Pertamax', 'Sistem Parking Otomatis','Sistem Automatic Sensorik')
+
+#pengujian untuk motor
+motor1 = Kendaraan('Merah', 'Honda', 'Motor')
+motor1 = Motor('Merah','Honda','Motor','Honda CBR 250', 'Manual')
+motor1.aksi('250','1','Pertamax DEX', 'Cakram d/b', '2000 RPM')
